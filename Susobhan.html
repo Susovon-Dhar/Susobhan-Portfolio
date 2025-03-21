@@ -1,0 +1,328 @@
+<html>
+<head>">
+    <title>Susobhan Dhar - Portfolio</title>
+    <style>
+        body {
+            font-family: 'monospace', monospace;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #5f0558, #090268);
+            color: #e2e8f0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        nav {
+            background: blur(100px);
+            border-bottom: 1px solid #4a5568;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav .container button {
+            background: none;
+            border: none;
+            color: #cbd5e0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav .container button.active, nav .container button:hover {
+            color: #ffffff;
+        }
+
+        nav .container .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #4a5568;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+
+        .card h2, .card h3 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #cbd5e0;
+        }
+
+        .skills-grid, .projects-grid, .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .hero {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #4a5568;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+            width:100%;
+            padding: 2rem;
+            border: 1px solid #4a5568;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            height: 100%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+        }
+
+        .hero button {
+            background-color: #4299e1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #2b6cb0;
+        }
+
+        footer {
+            background-color: rgba(26, 32, 44, 0.8);
+            border-top: 1px solid #4a5568;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: #cbd5e0;
+        }
+
+        footer a {
+            color: #4299e1;
+            margin: 0 0.5rem;
+        }
+
+        .icon{
+            font-size:2rem;
+        }
+
+        #home, #blog {
+            overflow-y: auto;
+            max-height: calc(100vh - 10rem);
+            padding-bottom: 2rem;
+            scroll-behavior: smooth;
+        }
+
+        #home::-webkit-scrollbar, #blog::-webkit-scrollbar {
+            width: 0.5rem;
+        }
+
+        #home::-webkit-scrollbar-track, #blog::-webkit-scrollbar-track {
+            background: #1a202c;
+            border-radius: 0.5rem;
+        }
+
+        #home::-webkit-scrollbar-thumb, #blog::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 0.5rem;
+        }
+
+        #home::-webkit-scrollbar-thumb:hover, #blog::-webkit-scrollbar-thumb:hover {
+            background-color: #718096;
+        }
+
+        .logo-scroll-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            margin: 2rem 0;
+        }
+
+        .logo-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .logo-scroll-container .card {
+            flex: 0 0 auto;
+            width: 200px;
+            margin-right: 1rem;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .logo-scroll-container .card img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+            border-radius: 0;
+            margin-right: 0;
+        }
+
+        .logo-scroll-container .card h2 {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        .animate-scroll-reverse {
+             animation: scroll 20s linear infinite reverse;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0Hhonpy0aDPql+TnrHAQbFruZ5j7ujzzkaOWRHAdtxzlKgB69kgdrItoRTwcLEwHzWIYz8f9I7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="title">Susobhan Dhar</div>
+            <div>
+                <button onclick="showPage('about me')" class="active">About me</button>
+                <button onclick="showPage('blog')"><i class="fa-solid fa-blog"></i> Project</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div id="home">
+            <div class="hero">
+                <h1>Hi, I'm Susobhan Dhar</h1>
+                <p>BIM & Data Engineer | Project Planning Specialist</p>
+                <button>Explore My Work</button>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="card">
+                    <h3>Twisted Tower Design</h3>
+                    <p>Revit | Dynamo | Parametric Design</p>
+                </div>
+                <div class="card">
+                    <h3>5-Storey School Building</h3>
+                    <p>AutoCAD | MS Project</p>
+                </div>
+                <div class="card">
+                    <h3>Industrial Planning Solutions</h3>
+                    <p>Primavera P6 | Power BI</p>
+                </div>
+            </div>
+            <div>
+                <h2>Experience</h2>
+                <p>Urbanaac Infrastructures | Property 360 India | CPWD</p>
+            </div>
+        </div>
+        <div id="home" class="page">
+        </div>
+        <div id="blog" class="page" style="display: none;">
+            <div class="blog-grid">
+                <div class="card">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=BIM+Sustainable&font=Montserrat" alt="Blog 1">
+                    <h3>The Future of BIM in Sustainable Design</h3>
+                    <p>2024-07-28</p>
+                    <p>Explore how Building Information Modeling is revolutionizing sustainable design practices and contributing to a greener future.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Data+Driven&font=Montserrat" alt="Blog 2">
+                    <h3>Data-Driven Decision Making in Construction</h3>
+                    <p>2024-07-25</p>
+                    <p>Learn how data engineering and analytics are transforming construction management, leading to more efficient and informed decision-making.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Primavera+P6&font=Montserrat" alt="Blog 3">
+                    <h3>Mastering Project Planning with
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Susobhan Dhar. All rights reserved.</p>
+            <div>
+                <a href="mailto:susobhandhar@yahoo.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/susobhandhar" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+
+            const buttons = document.querySelectorAll('nav .container button');
+            buttons.forEach(button => button.classList.remove('active'));
+            const activebutton = document.querySelector(`nav .container button:nth-child(${pageId === 'About me' ? 1 : 2})`);
+            activebutton.classList.add('active');
+        }
+        showPage('home');
+    </script>
+</body>
+</html>
+ 

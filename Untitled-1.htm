@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="TCAP.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio – Driving Innovation in Data Science, Planning Engineering & BIM Solutions</title>
+    <style>
+        html
+        {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: url('bg.png') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: white;
+            font-family: monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(128, 122, 134, 0.301);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 1.1rem;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        hero {
+            background: rgba(68, 99, 100, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            font-size: 1.5rem;
+            text-align: left;
+            width: 80%;
+            max-width: 1200px;
+            padding: 80px;
+            margin-top: 150px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Narrower border */
+        }
+
+        hero #title {
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        #about {
+            width: 80%; /* Adjusted width */
+            max-width: 1200px;
+            height: auto; /* Removed fixed height */
+            padding: 60px 20px;
+            margin-bottom: 50px; /* Added bottom margin for spacing */
+            border-radius: 10px;
+            background: rgba(68, 99, 100, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the start (left in LTR) */
+            text-align: left; /* Ensure text is left-aligned */
+        }
+
+        #skills, #contact{
+            width: 80%;
+            max-width: 1200px;
+            padding: 60px 20px;
+            margin-bottom: 50px;
+            border-radius: 10px;
+            background: rgba(68, 99, 100, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Narrower border */
+        }
+        #experience {
+            width: 100%;
+            max-width: 1200px;
+            padding: 60px 20px;
+            margin-bottom: 50px;
+            border-radius: 10px;
+    
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Narrower border */
+        }
+
+
+        #projects {
+            width: 80%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            margin-bottom: 50px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .projects-menu {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(68, 99, 100, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .projects-menu button {
+            background: none;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .projects-menu button.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .projects-menu button:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-list {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
+            gap: 20px; /* Space between grid items */
+        }
+
+        .project-item {
+            background: rgba(68, 99, 100, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 15px; /* Reduced padding */
+            margin-bottom: 0; /* Removed bottom margin */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Narrower border */
+            display: flex; /* Use flexbox for image and text alignment */
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            text-align: center; /* Center text within the project item */
+        }
+
+        .project-item h3 {
+            margin-top: 10px; /* Added margin above heading */
+            font-size: 1.2rem; /* Reduced font size of heading */
+            margin-bottom: 5px; /* Reduced margin below heading */
+            color: white;
+        }
+
+        .project-item p {
+            line-height: 1.4; /* Reduced line height */
+            margin-bottom: 10px; /* Reduced margin below paragraph */
+            font-size: 0.9rem;
+            color: #eee;
+        }
+
+        .project-item .project-image {
+            width: 100%; /* Make image fill the container */
+            height: 250px; /* Fixed height for square aspect ratio */
+            object-fit: cover; /* Ensure image covers the area, cropping if necessary */
+            border-radius: 8px; /* Maintain border radius */
+            margin-bottom: 10px; /* Reduced margin below image */
+        }
+
+        .project-item .project-links a {
+            color: #add8e6;
+            text-decoration: none;
+            margin: 0 5px; /* Reduced horizontal margin */
+            padding: 6px 10px; /* Slightly reduced padding */
+            border-radius: 5px;
+            border: 1px solid #add8e6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .project-item .project-links a:hover {
+            background-color: #add8e6;
+            color: #220341;
+        }
+
+        .project-item[data-category="BIM"],
+        .project-item[data-category="Data Engineering"],
+        .project-item[data-category="Structural"] {
+            /* Styles for specific categories if needed */
+        }
+
+        .project-item.hidden {
+            display: none !important;
+        }
+
+        .vertical-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background-color: #555;
+        }
+
+        .vertical-timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            clear: both;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 0;
+            font-size: 0.9rem;
+            color: #ccc;
+            background: rgba(68, 99, 100, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Narrower border */
+        }
+
+        .vertical-timeline-item:nth-child(odd) .timeline-date {
+            left: 10px;
+            transform: translateX(-100%);
+        }
+
+        .vertical-timeline-item:nth-child(even) .timeline-date {
+            right: 10px;
+            transform: translateX(100%);
+        }
+
+        .timeline-content {
+            background: rgba(68, 99, 100, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            display: sticky;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Narrower border */
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding-top: 40px;
+        }
+
+        .vertical-timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 10px;
+            transform: translateX(0);
+        }
+
+        .vertical-timeline-item:nth-child(even) .timeline-content {
+            margin-right: 10px;
+            margin-left: auto;
+            transform: translateX(0);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            padding-left: 20px;
+        }
+
+        .timeline-content li {
+            margin-bottom: 5px;
+        }
+
+        .vertical-timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px; /* Smaller circle */
+            height: 12px; /* Smaller circle */
+            background-color: #add8e6;
+            border-radius: 50%;
+            border: 1px solid #555; /* Slightly narrower border */
+            z-index: 1;
+        }
+
+        .vertical-timeline-item:last-child::after {
+        }
+
+        @media (max-width: 768px) {
+            .vertical-timeline::before {
+                left: 20px;
+            }
+
+            .vertical-timeline-item .timeline-date {
+                position: relative;
+                left: 0;
+                transform: none;
+                margin-bottom: 10px;
+            }
+
+            .vertical-timeline-item .timeline-content {
+                margin-left: 40px;
+                transform: translateX(0);
+            }
+
+            .vertical-timeline-item:nth-child(odd) .timeline-content,
+            .vertical-timeline-item:nth-child(even) .timeline-content {
+                margin-right: 0;
+            }
+
+            .vertical-timeline-item::after {
+                left: 20px;
+            }
+            #projects {
+                padding: 20px 10px;
+            }
+            .projects-menu {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+            }
+            .projects-menu button{
+                margin: 5px;
+            }
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+             #about{
+                width: 80%;
+                height: auto;
+                border: none;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #ccc;
+            position: relative;
+            width: 100%;
+            background-color: #100236c7;
+        }
+
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(68, 99, 100, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        #contact-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        #contact-form label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+            color: #eee;
+            font-size: 0.9rem;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        #contact-form input:focus,
+        #contact-form textarea:focus {
+            outline: none;
+            border-color: #add8e6;
+        }
+
+        #contact-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        #contact-form button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #add8e6;
+            color: #220341;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #contact-form button:hover {
+            background-color: #87ceeb;
+            color: #220341;
+        }
+
+        #message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 128, 0, 0.8);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        #message-box.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(10px);
+        }
+
+        #message-box.error {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+        h2, h3{
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1;
+            text-align: left;
+        }
+        p{
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;  
+          
+            text-align: justify;
+        }
+        .about-me-section {
+  display: flex;
+  margin-top: 200px;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  /*border-bottom: 1px solid #ddd;  Optional: Add a border */
+}
+
+.about-me-image-side {
+  flex: 1;
+  padding-right: 5px;
+  box-sizing: border-box;
+}
+
+.about-me-intro {
+  flex: 1;
+  padding-left:5px;
+  box-sizing: border-box;
+  /* Glassmorphism styles start here */
+  background-color: rgba(8, 40, 58, 0.582); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Add blur to the background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  padding: 20px; /* Add padding to the content inside the glassmorphism container */
+  /* Glassmorphism styles end here */
+}
+
+.about-me-image-collage {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(4, 420px);
+  gap:25px;
+  height: 410px;
+  overflow:visible;
+  border-radius: 8px;
+}
+
+.about-me-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 3% ease;
+  opacity: 1;
+}
+
+.about-me-image:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.about-me-image:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.about-me-image:nth-child(3) {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+.about-me-image:nth-child(4) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.about-me-image:nth-child(5) {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+.about-me-image:nth-child(6) {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+.about-me-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.about-me-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .about-me-section {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .about-me-image-side,
+  .about-me-intro {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+
+  .about-me-image-collage {
+    grid-template-rows: auto;
+    height: auto;
+    padding-top: 10px;
+    margin-top: 10rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-me-image {
+    margin-bottom: 10px;
+  }
+  .about-me-image:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+  .about-me-image:nth-child(5) {
+    grid-column: 2 / 3;
+    grid-row: auto;
+  }
+  .about-me-image:nth-child(3) {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+
+  .about-me-image:nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+
+  .about-me-image:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: auto;
+  }
+  .about-me-image:nth-child(6) {
+    grid-column: auto;
+  }
+  .about-me-title {
+    font-size: 24px;
+  }
+
+  .about-me-description {
+    font-size: 14px;
+    color:#eee;
+  }
+}
+p1
+{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: white;  
+    text-align: left;
+    line-height: 0.25px;
+}
+.skills-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*background-color: #f0f0f0;  Remove or adjust as needed */
+}
+
+.skills-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #f3f3f3e5;
+  text-align: center;
+}
+
+.skills-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px; /* Maximum width for the gallery */
+  margin-bottom: 20px;
+}
+
+.skill-card {
+  /* Glassmorphism effect */
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Add a border */
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: #fff2f2;
+  line-height: 1.6;
+}
+
+.skill-list-item {
+  margin-bottom: 5px;
+}
+.skill-list-item::before {
+  content: "•";
+  color: #4CAF50;
+  margin-right: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .skills-gallery {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+  .skills-title{
+    font-size: 24px;
+  }
+}
+</style>
+</head>
+<body>
+    <nav>`
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="about-me-section">
+        <div class="about-me-image-side">
+            <div class="about-me-image-collage">
+                <img src="about_me_1.jpg" alt="About Me Image 1" class="about-me-image">
+                <img src="about_me_5.jpg" alt="About Me Image 2" class="about-me-image">
+                <img src="about_me_3.jpg" alt="About Me Image 3" class="about-me-image">
+                <img src="about_me_4.jpg" alt="About Me Image 4" class="about-me-image">
+                <img src="about_me_2.jpg" alt="About Me Image 5" class="about-me-image">
+            </div>
+        </div>
+        <div class="about-me-intro" >
+            <h1 class="about-me-title" style="color: #add8e6;" style="text-align: left;">Welcome to My Portfolio – Driving Innovation in Data Science, Planning Engineering & BIM Solutions</h1>
+            <section class="about-me-description-section">
+                <h1 class="about-me-name" style="color: #4CAF50; font-size: 24px;" style="text-align: left;">I'm a BE Civil Engineer with exposure in precast, BIM & Data Analysis</h1>
+                <p1 class="about-me-description" style="color: #ccc;" style="text-align: left;" >
+                    Hi, I'm Susobhan Dhar, a dedicated professional with expertise in Data Science, Planning Engineering, Project Management, and BIM Automation. I combine technical skills with practical experience to deliver innovative solutions that enhance project performance and streamline workflows.
+                </p>
+                <div class="about-me-expertise">
+                    <div class="about-me-expertise-item">
+                        <h2 class="about-me-expertise-title" style="color: #4CAF50;" style="text-align: left;">My Expertise in Planning Engineering & Project Management</h2>
+                        <p1 class="about-me-description" style="color: #ccc;" style="text-align: left;">As a Planning Engineer, I’ve worked extensively on project scheduling, construction management, and resource planning. Using tools like Primavera P6, I optimize project timelines, allocate resources efficiently, and ensure cost control throughout the project lifecycle.</p>
+                    </div>
+                    <div class="about-me-expertise-item">
+                        <h2 class="about-me-expertise-title" style="color: #4CAF50;" style="text-align: left;">Data Science & Automation – Powering Smarter Decisions</h2>
+                        <p1 class="about-me-description" style="color: #ccc;" style="text-align: left;">I use Python, along with libraries like Pandas, NumPy, and Matplotlib, to analyze data, develop automated workflows, and create custom reporting dashboards. These solutions enable smarter decisions and improve project efficiency.</p>
+                    </div>
+                    <div class="about-me-expertise-item">
+                        <h2 class="about-me-expertise-title" style="color: #4CAF50;" style="text-align: left;">BIM Automation & Design Solutions – Enhancing Project Visualization</h2>
+                        <p1 class="about-me-description" style="color: #ccc;" style="text-align: left;">I'm passionate about BIM automation with tools like Revit, Dynamo, and Grasshopper. I create intelligent 3D models that enhance visualization, improve design accuracy, and simplify collaboration across teams.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div> 
+    <div id="projects">
+        <h2>Projects</h2>
+        <div class="projects-menu">
+            <button class="active" data-filter="all">All</button>
+            <button data-filter="BIM">BIM</button>
+            <button data-filter="Data Engineering">Data Engineering</button>
+            <button data-filter="Structural">Structural</button>
+        </div>
+        <div class="project-list">
+            <div class="project-item" data-category="BIM">
+                <img src="TTD.png" alt="BIM Project 1" class="project-image">
+                <h3>Design & Optimization of a G+12 Twisted Tower</h3>
+                <p>Developed an innovative spiraling façade that enhanced the building's aesthetic appeal while optimizing natural light and ventilation. Automated repetitive design tasks using Dynamo to improve workflow efficiency. Utilized advanced Revit techniques for modeling complex geometries and ensured accurate construction documentation. Incorporated sustainable features to reduce energy consumption.</p>
+                <p>Tools Used: Dynamo, Revit</p>
+            </div>
+
+            <div class="project-item" data-category="BIM">
+                <img src="RCC.png" alt="Automated Drafting" class="project-image">
+                <h3>Automating AutoCAD Drafting of RCC Beam Section Using Python</h3>
+                <p>Developed a Python script to automate drafting tasks for RCC beam sections in AutoCAD. The tool automated the creation of top and bottom fibers, stirrups, and annotations while allowing user interaction for flexible parameter adjustments. This streamlined the drafting process and improved accuracy.</p>
+                <p>Tools Used: Python (pyautocad), AutoCAD</p>
+            </div>
+
+            <div class="project-item" data-category="Structural">
+                <img src="G6.png" alt="Structural Analysis Project" class="project-image">
+                <h3>Comprehensive G+6 Building Structural Analysis & Mat Footing Design</h3>
+                <p>Conducted detailed structural analysis of a G+6 building, focusing on load distribution and stability. Designed mat footing systems to ensure effective load transfer, improving structural integrity. Integrated geotechnical considerations into the design to enhance performance under varying soil conditions.</p>
+                <p>Tools Used: STAAD Pro, STAAD Foundation, RCDC</p>
+            </div>
+
+            <div class="project-item" data-category="Structural">
+                <img src="Hangar.png" alt="Airplane Hangar Design" class="project-image">
+                <h3>Airplane Hangar Design and Analysis</h3>
+                <p>Designed an airplane hangar with a 100m x 50m x 15m structure, ensuring efficient lighting and ventilation systems. The project involved analyzing dynamic load conditions to ensure stability and functionality while balancing structural efficiency.</p>
+                <p>Tools Used: RAM Structural System</p>
+            </div>
+
+            <div class="project-item" data-category="Structural">
+                <img src="Cooling.png" alt="Cooling Tower Analysis" class="project-image">
+                <h3>Modal Analysis of Cooling Tower</h3>
+                <p>Conducted a comprehensive modal analysis to assess the cooling tower’s structural response to dynamic loads. Identified natural frequencies and mode shapes to improve structural stability and ensure the tower's resilience against seismic and wind forces.</p>
+                <p>Tools Used: SAP 2000</p>
+            </div>
+
+            <div class="project-item" data-category="Structural">
+                <img src="Two.png" alt="Two-Lane Road Design" class="project-image">
+                <h3>Open Roads Design for a Two-Lane Road</h3>
+                <p>Designed a two-lane road corridor focusing on improved connectivity. The project involved developing road alignments, cross-section designs, and calculating earthwork quantities. Prepared detailed construction plans to streamline project execution.</p>
+                <p>Tools Used: OpenRoads, Civil 3D</p>
+            </div>
+
+            <div class="project-item" data-category="BIM">
+             <img src="std.png" alt="Stadium Design Model" class="project-image">
+                        <h3>Stadium Design and Modeling</h3>
+                    <p>Designed and modeled a stadium structure using CAD/CAM software.  The project involved creating a detailed 3D model, including the stands, field, and surrounding infrastructure.  Visualized the design from multiple perspectives and generated technical drawings for construction planning.
+                    </p>
+                    <p>Tools Used: Rhinoceros and Grasshopper</p>
+                </div>
+                <div class="project-item" data-category="BIM">
+                    <img src="comm.png" alt="G+4 Commercial Complex with Dome Structure" class="project-image">
+                    <h3 class="project-title">Design &amp; Analysis of a G+4 Commercial Complex with Dome Structure</h3> 
+                    <p class="project-description">Designed and analyzed a G+4 commercial complex featuring an innovative dome structure. Integrated aesthetic elements with functional design using Revit for architectural modeling and STAAD Pro for structural analysis, ensuring stability and visual appeal.</p>
+                    <p class="project-tools">Tools Used: Dynamo, Revit, STAAD Pro</span></p>
+                </div>               
+    
+                <div class="project-item" data-category="Structural">
+                    <img src="Plate.png" alt="Plate Girder Design" class="project-image">
+                    <h3>Design of a Plate Girder Using IDEA StatiCa</h3>
+                    <p>Designed a plate girder capable of supporting high-stress conditions. Performed detailed analysis, including strength checks and load assessments, ensuring the girder met performance criteria.</p>
+                    <p>Tools Used: IDEA StatiCa</p>
+                </div>
+    
+                <div class="project-item" data-category="Data Engineering">
+                     <img src="ETL.jpg" alt="ETL Pipeline" class="project-image">
+                    <h3>ETL Pipeline for PMAY Project Data Handling</h3>
+                    <p>Developed an ETL pipeline to extract, transform, and load data for the Pradhan Mantri Awas Yojana (PMAY) project. Automated datacleaning processes using Python and Prefect to ensure accurate insights. Integrated Power BI to visualize progress, fund allocation, and beneficiary tracking.</p>
+                    <p>Tools Used: Python (Pandas),SQL, Prefect, Power BI</p>
+                </div>
+    
+                <div class="project-item" data-category="Data Engineering">
+                    <img src="RBI.png" alt="Financial Dashboard" class="project-image">
+                    <h3>Financial Analysis Dashboard for State Budgets</h3>
+                    <p>Created interactive dashboards to analyze financial data for multiple states. The dashboard included budget distribution, expenditure trends, and financial forecasts. Integrated dynamic visualizations to support strategic decision-making.</p>
+                    <p>Tools Used: Power BI, Advanced Excel,Pandas</p>
+                </div>
+                <div class="project-item" data-category="Data Engineering">
+                    <img src="Perf.jpg" alt="Hotel Performance Dashboard" class="project-image">
+                        <h3 class="project-title">Hotel Performance Analysis Dashboard</h3>
+                   <p class="project-description">
+                        Developed an interactive Tableau dashboard to analyze hotel performance metrics. The dashboard visualizes key indicators such as the number of hotels, room counts, and their distribution across a geographical region.  It also presents insights into market potential and growth trends, including year-over-year increases in hotel and room numbers.  The dashboard provides a clear overview of hotel data, enabling stakeholders to understand market dynamics and identify potential areas for growth.
+                    </p>
+                    <p>Tools Used: Tableau , SQL , Advanced Excel,Pandas</p>
+                </div>
+            </div>
+        </div>
+        <div id="experience">
+            <h2>Experience</h2>
+            <div class="vertical-timeline">
+                <div class="vertical-timeline-item">
+                    <div class="timeline-date">March 2024 - August 2024</div>
+                    <div class="timeline-content">
+                        <h3>GET Planning | Urbanaac Infrastructures Pvt Ltd</h3>
+                        <p>In this role, I successfully managed erection billing processes, ensuring accuracy and timely documentation. I developed and implemented real-time spreadsheet dashboards that enhanced data visualization and improved tracking of project milestones. By generating comprehensive daily progress reports, I provided senior management with actionable insights, facilitating informed decision-making. Additionally, I optimized project tracking and production monitoring processes, contributing to improved operational efficiency and strategic planning.</p>
+                    </div>
+                </div>
+                <div class="vertical-timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>Project Intern | Property 360 India Pvt Ltd</h3>
+                        <p>As a Project Intern, I contributed to structural design and visualization tasks using industry-standard software. I designed structural elements with STAAD Pro, ensuring compliance with engineering standards. Additionally, I created detailed 3D models using Revit, improving project visualization and enhancing collaboration among project stakeholders.</p>
+                    </div>
+                </div>
+                <div class="vertical-timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>Quantity Surveyor Intern | Central Public Works Department (CPWD)</h3>
+                        <p>During my internship at CPWD, I conducted precise measurements for materials such as ballast, stone dust, and potholes across an 18 km project stretch. This role required attention to detail and accuracy to support effective project assessments and resource planning.</p>
+                    </div>
+                </div>
+                <div class="vertical-timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Project Consultant</h3>
+                        <p>In my freelance engagements, I managed area coverage across four projects totaling 9,000 sq ft. By utilizing MS Project, I ensured efficient scheduling, resource management, and budget tracking. This proactive approach enabled successful project delivery within designated timelines and cost constraints.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="skills-section">
+            <h2 class="skills-title">My Skills</h2>
+            <div class="skills-gallery">
+              <div class="skill-card">
+                <h3 class="skill-category">Data Analytics & Automation</h3>
+                <ul class="skill-list">
+                  <li class="skill-list-item">Python (Pandas, Prefect) – Data wrangling, ETL pipeline development, and process automation</li>
+                  <li class="skill-list-item">Power BI, Tableau – Interactive dashboard creation for financial analysis and project monitoring</li>
+                  <li class="skill-list-item">Advanced Excel – Complex formulas, data visualization, and spreadsheet automation</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3 class="skill-category">Project Management Tools</h3>
+                <ul class="skill-list">
+                  <li class="skill-list-item">Primavera P6 – Project planning, scheduling, and resource management</li>
+                  <li class="skill-list-item">MS Project – Gantt charts, critical path analysis, and cost control</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3 class="skill-category">Structural Design & Analysis</h3>
+                <ul class="skill-list">
+                  <li class="skill-list-item">STAAD Pro, STAAD Foundation, RCDC – Structural analysis and foundation design</li>
+                  <li class="skill-list-item">RAM Structural System, SAP 2000 – Dynamic analysis, load assessments, and stability checks</li>
+                  <li class="skill-list-item">IDEA StatiCa – Structural element design and load condition analysis</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3 class="skill-category">BIM & 3D Modeling</h3>
+                <ul class="skill-list">
+                  <li class="skill-list-item">Revit, Dynamo – Advanced modeling, parametric design, and automation</li>
+                  <li class="skill-list-item">AutoCAD (with Python Automation) – Enhanced drafting efficiency using custom scripts</li>
+                  <li class="skill-list-item">Rhinoceros, Grasshopper – Complex geometry modeling and design optimization</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3 class="skill-category">Infrastructure Design</h3>
+                <ul class="skill-list">
+                  <li class="skill-list-item">OpenRoads, Civil 3D – Road alignment, cross-section design, and earthwork calculations</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3 class="skill-category">Other Skills</h3>
+                <ul class="skill-list">
+                  <li class="skill-list-item">Earned Value Management (EVM) – Project progress and financial tracking</li>
+                  <li class="skill-list-item">ETL & Data Pipelines – Data cleaning, transformation, and visualization</li>
+                  <li class="skill-list-item">Report Generation – Creating comprehensive dashboards for leadership insights</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+    </body>
+<section id="contact-section" style="font-family: monospace; background-color: #070027da; padding: 40px 20px; text-align: center; width: 100%;max-width: 1200px;">
+    <div id="contactof">
+        <h2 style="color: #4CAF50; font-size: 28px;">Contact</h2>
+        <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; color: #555;">
+            Whether you're looking for innovative design solutions, efficient project planning strategies, or just someone to brainstorm with, I'm here. As a Planning Engineer with expertise in BIM development, structural design, and quantity surveying, I specialize in crafting efficient workflows and innovative solutions. I'm actively seeking roles as a Planning Engineer, Project Coordinator, VDC Data Engineer, and Business Analyst, aiming for a competitive package in the range of ₹5-6 LPA. Let's connect and build something extraordinary.
+        </p>
+        <div class="contact-details" style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+            <a href="mailto:susobhandhar@yahoo.com" style="text-decoration: none; display: flex; align-items: center; background-color: #4CAF50; color: #fff; padding: 10px 20px; border-radius: 5px;">
+                <img src="email-icon.png" alt="Email" style="width: 24px; margin-right: 10px;"> Email
+            </a>
+            <a href="https://www.linkedin.com/in/susobhan-dhar/" target="_blank" style="text-decoration: none; display: flex; align-items: center; background-color: #0077B5; color: #fff; padding: 10px 20px; border-radius: 5px;">
+                <img src="linekdin-icon.png" alt="LinkedIn" style="width: 24px; margin-right: 10px;"> LinkedIn
+            </a>
+            <a href="https://wa.me/919874572688" target="_blank" style="text-decoration: none; display: flex; align-items: center; background-color: #25D366; color: #fff; padding: 10px 20px; border-radius: 5px;">
+                <img src="whatsapp-icon.png" alt="WhatsApp" style="width: 24px; margin-right: 10px;"> WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+</section>
+        <footer>
+            <p style="text-align: center;">&copy; 2025 Susobhan Dhar</p>
+        </footer>
+    
+        <script>
+            const filterButtons = document.querySelectorAll('.projects-menu button');
+            const projectItems = document.querySelectorAll('.project-item');
+    
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+    
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+    
+                    projectItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+    
+            function toggleTimelineItem(item) {
+                item.classList.toggle('expanded');
+            }
+    
+            const contactForm = document.getElementById('contact-form');
+            const messageBox = document.getElementById('message-box');
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzTjK9-z9vW9P1Kx-yGgJvKj-5ujz6TfK-z69qKIOtuhLBGK8k9E9e97e-MKYtXw/exec'; // Replace with your Google Apps Script URL
+    
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+    
+                const formData = new FormData(contactForm);
+    
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (response.ok) {
+                        messageBox.textContent = 'Thank you! Your message has been sent.';
+                        messageBox.className = 'show';
+                        contactForm.reset();
+                        setTimeout(() => {
+                            messageBox.className = '';
+                        }, 5000);
+                    } else {
+                        messageBox.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                        messageBox.className = 'show error';
+                        setTimeout(() => {
+                            messageBox.className = '';
+                        }, 5000);
+                    }
+                    return response.json();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    messageBox.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                    messageBox.className = 'show error';
+                     setTimeout(() => {
+                            messageBox.className = '';
+                        }, 5000);
+                });
+            });
+        </script>
+    </html>
+    
